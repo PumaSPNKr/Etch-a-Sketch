@@ -1,0 +1,16 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+div {
+    border: 4px white solid;
+}
+
+#container {
+    display: flex;
+    height: 800px;
+    width: 800px;
+    justify-self: center;
+    margin: 160px 0 0 0;
+}
