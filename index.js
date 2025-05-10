@@ -3,6 +3,25 @@ const maxWidth = 960;
 const maxHeight = 960;
 let gridNumber = 20;
 
+const resetButton = document.querySelector("#resetButton");
+resetButton.addEventListener('click', (e) => {
+    promptUser();
+})
+
+function promptUser(){
+    let gridSize = parseInt(prompt("Enter a number between 1-100 for grid size."));
+
+    while (isNaN(gridSize) || gridSize < 1 || gridSize > 100){
+        gridSize = parseInt(prompt("Enter a number between 1-100 for grid size."));
+    }
+    
+    initializeGrid(gridSize);
+}
+
+function initalizeGrid(gridSize){
+    
+}
+
 for (let i = 0; i < gridNumber; i++){
     
     let newRow = document.createElement("div");
