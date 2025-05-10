@@ -1,6 +1,6 @@
 const gridContainer = document.querySelector("#container");
-const maxWidth = 800;
-const maxHeight = 800;
+const maxWidth = 960;
+const maxHeight = 960;
 let gridNumber = 20;
 
 for (let i = 0; i < gridNumber; i++){
@@ -17,7 +17,7 @@ for (let i = 0; i < gridNumber; i++){
 function addColumns(row){
     for (let i = 0; i < gridNumber; i++){
         let newColumn = document.createElement("div");
-        newColumn.style = "background-color: black; width: " + maxWidth/gridNumber + "px; border: 1px blue solid;"
+        newColumn.style = "background-color: black; width: " + maxWidth/gridNumber + "px; border: 1px blue solid; margin: -1px;"
         newColumn.classList.toggle("grid");
         row.appendChild(newColumn);
 
