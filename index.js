@@ -43,16 +43,21 @@ function addColumns(row, gridSize){
         newColumn.classList.toggle("grid");
         row.appendChild(newColumn);
 
-        newColumn.addEventListener("mouseover", (e) => {
-            let letters = "0123456789ABCDEF";
-            let color = "#";
-            for (let j = 0; j < 6; j++){
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-
-            newColumn.style.backgroundColor = color;
-        } )
+        addColorEvent(newColumn);
     }
+}
+
+function addColorEvent(column){
+    column.addEventListener("mouseover", (e) => {
+        let letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let j = 0; j < 6; j++){
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+
+        column.style.backgroundColor = color;
+        console.log(column.style.opacity);
+    } )
 }
 
 initGrid(defaultSize);
