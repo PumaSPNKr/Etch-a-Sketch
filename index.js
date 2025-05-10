@@ -1,7 +1,7 @@
 const gridContainer = document.querySelector("#container");
 const maxWidth = 960;
 const maxHeight = 960;
-let gridNumber = 20;
+let defaultSize = 20;
 
 const resetButton = document.querySelector("#resetButton");
 resetButton.addEventListener('click', (e) => {
@@ -14,29 +14,32 @@ function promptUser(){
     while (isNaN(gridSize) || gridSize < 1 || gridSize > 100){
         gridSize = parseInt(prompt("Enter a number between 1-100 for grid size."));
     }
-    
-    initializeGrid(gridSize);
+    console.log("Compatable number entered!");
+    initGrid(gridSize);
 }
 
-function initalizeGrid(gridSize){
-    
+function initGrid(gridSize){
+    while (gridContainer.firstChild){
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+    addRows(gridSize);
 }
 
-for (let i = 0; i < gridNumber; i++){
-    
-    let newRow = document.createElement("div");
-    newRow.style = "background-color: lightgreen; height: " + maxHeight/gridNumber + "px; border: 1px black solid; display: flex;";
+function addRows(gridSize){
+    for (let i = 0; i < gridSize; i++){
+        
+        let newRow = document.createElement("div");
+        newRow.style = "background-color: lightgreen; height: " + maxHeight/gridSize + "px; border: 1px black solid; display: flex;";
 
-    gridContainer.appendChild(newRow);
-    addColumns(newRow);
-    
+        gridContainer.appendChild(newRow);
+        addColumns(newRow, gridSize);  
+    }
 }
 
-
-function addColumns(row){
-    for (let i = 0; i < gridNumber; i++){
+function addColumns(row, gridSize){
+    for (let i = 0; i < gridSize; i++){
         let newColumn = document.createElement("div");
-        newColumn.style = "background-color: black; width: " + maxWidth/gridNumber + "px; border: 1px blue solid; margin: -1px;"
+        newColumn.style = "background-color: black; width: " + maxWidth/gridSize + "px; border: 1px blue solid; margin: -1px;"
         newColumn.classList.toggle("grid");
         row.appendChild(newColumn);
 
@@ -51,4 +54,6 @@ function addColumns(row){
         } )
     }
 }
+
+initGrid(defaultSize);
 
